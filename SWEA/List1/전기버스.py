@@ -1,41 +1,21 @@
-'''
-3
-3 10 5
-1 3 5 7 9
-3 10 5
-1 3 7 8 9
-5 20 5
-4 7 9 14 17
-'''
-'''
-#1 3
-#2 0
-#3 4
-'''
 TC = int(input())
 for T in range(1, TC+1):
-    K, N, M = map(int, input().split())
-    arr_M = list(map(int, input().split()))
-    bucket = [0] * 100
-    for i in range(M):
-        bucket[arr_M[i]] += 1
-    now = 0 # idx
+    k, n, m = map(int, input().split())
+    # k : 최대 이동 거리
+    # n : 정류장 수
+    # m : 충전소 수
+    charge = list(map(int, input().split())) # 충전소 위치
+    now = 0
+    next = now + k
     cnt = 0
-    flag = 0
-    while 1:
-        if now >= N:
+    while next < n:
+        if next == now:
+            cnt = 0
             break
-        move = 0
-        for i in range(K, 0, -1):
-            move += 1
-            if bucket[now+i] == 1:
-                now += i
-                cnt += 1
-                break
-        if move >= K:
-            flag = 1
-            break
-        if cnt > M:
-            flag = 1
-            break
-    print(0) if flag else print(cnt)
+        elif next in charge:
+            now = next
+            next = now + k
+            cnt += 1
+        else:
+            next -= 1
+    print(f'#{T} {cnt}')
