@@ -27,5 +27,7 @@ for i in range(len(brr)):
         result[b] = result[a]
     if result[b] != 0:
         result[a] = result[b]
+
+# 결과 출력하기
 for i in range(1, K+1):
     print(result[i], end='')
