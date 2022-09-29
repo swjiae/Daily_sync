@@ -1,39 +1,45 @@
-'''
-3
-0 18 34
-48 0 55
-18 7 0
-'''
 from collections import deque
+TC = int(input())
+for T in range(1, TC+1):
+    # 입력받기
+    N = int(input())
+    arr = [list(map(int, input().split())) for _ in range(N)]
 
-# 입력받기
-N = int(input())
-arr = [list(map(int, input().split())) for _ in range(N)]
+    # 가능한 경로의 에너지 소비량 구하기
+    def Amount(path):
+        total = 0
+        q = deque(path)
+        q.appendleft(0)
+        while 1:
+            if len(q) == 1:
+                st = q.popleft()
+                ed = 0
+                total += arr[st][ed]
+                return total
+            st = q.popleft()
+            ed = q.popleft()
+            total += arr[st][ed]
+            q.appendleft(ed)
 
-dy = [-1, 1, 0, 0]
-dx = [0, 0, -1, 1]
+    # dfs 이용하여 가능한 경로 & 최소값 구하기
+    path = []
+    used = [0]*(N)
+    Min = 21e8
+    def dfs(level):
+        global N, Min
+        if level == N-1:
+            amount = Amount(path)
+            Min = min(Min, amount)
+            return
+        for i in range(1, N):
+            if used[i] == 1: continue
+            path.append(i)
+            used[i] = 1
+            dfs(level+1)
+            path.pop()
+            used[i] = 0
 
-def bfs(y, x):
-    used = [[0] * N for _ in range(N)]
-    q = deque()
-    q.append([y, x])
-    used[y][x] = 1
-    Sum = arr[y][x]
-    while q:
-        y, x = q.popleft()
-        for i in range(4):
-            ny = y + dy[i]
-            nx = x + dx[i]
-            if 0 <= ny < N and 0 <= nx < N:
-                if used[ny][nx] == 1: continue
-                if arr[ny][nx] == 0: continue
-                q.append([ny, nx])
-                Sum += arr[ny][nx]
-    return Sum
-size = []
-for i in range(N):
-    for j in range(N):
-        if arr[i][j] != 0:
-            size.append(bfs(i, j))
+    dfs(0)
 
-print(min(size))
+    # 출력하기
+    print(f'#{T}', Min)
