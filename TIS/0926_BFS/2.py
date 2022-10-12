@@ -22,6 +22,6 @@ def bfs(top):
                 used[i] = 1
                 q.append(i)
 
-used[1] = 1
-bfs(1)
+used[0] = 1
+bfs(0)
 print(*result)
