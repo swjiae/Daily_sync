@@ -43,7 +43,7 @@ for t in range(1, T+1):
     for i in range(N):
         for j in range(N):
             arr = deepcopy(bu)
-            arr[i][j] = max(arr[i][j] - K, 0)
+            arr[i][j] = arr[i][j] - K
             max_loc = Max(arr)
             for sy in range(N):
                 for sx in range(N):
