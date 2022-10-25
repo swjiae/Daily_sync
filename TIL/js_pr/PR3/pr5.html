@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <form action="#">
+    <input type="text" id="inputdata">
+    <input type="submit" value="Add">
+  </form>
+  <ul></ul>
+  <script>
+    const formTag = document.querySelector('form')
+    const ulTag = document.querySelector('ul')
+    const todo = function (evnet) {
+      event.preventDefault()
+      const inputTag = document.querySelector('#inputdata')
+      data = inputTag.value
+      if (data.trim()) {
+        const liTag = document.createElement('li')
+        liTag.innerText = data
+        ulTag.appendChild(liTag)
+        event.target.reset()
+      } else {
+        alert('값을 입력하세요.')
+      }
+    }
+    formTag.addEventListener('submit', todo)
+  </script>
+</body>
+</html>
