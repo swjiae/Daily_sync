@@ -29,14 +29,3 @@ const playGame = (p1_choice, p2_choice) => {
 for (i = 0; i < p1.length; i++) {
   console.log(playGame(p1[i], p2[i]))
 }
-
-// 2
-// 0
-// 2
-// 0
-// 2
-// 1
-// 2
-// 1
-// 0
-// 2
