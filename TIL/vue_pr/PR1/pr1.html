@@ -9,8 +9,8 @@
 <body>
   <div id="app">
     <h1>Popular Movies</h1>
-    <div v-for="movie in movieInfo.results" v-if="mmovie.vote_average >= 8">
-      <li >{{ movie.title }}</li>
+    <div v-for="movie in movieinfo.results" v-if="movie.vote_average >= 8">
+      <li>{{ movie.title }}</li>
     </div>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
