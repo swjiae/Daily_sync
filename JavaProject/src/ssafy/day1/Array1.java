@@ -5,10 +5,10 @@ import java.util.Random;
 
 public class Array1 {
     public static void main(String[] args) {
-        int N = 6;
-        Random rand = new Random();
 
         // 1. 1~5 까지의 random 정수 5개를 저장할 배열을 만들고 값을 저장하시오.
+        int N = 6;
+        Random rand = new Random();
         int [] arr = new int [5]; // 1) 선언 (int의 배열 arr) 2) 메모리 구성 3) 할당
         for (int i=0; i<arr.length; i++) {
             arr[i] = rand.nextInt(N);
