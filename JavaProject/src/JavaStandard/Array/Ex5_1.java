@@ -1,5 +1,5 @@
-// 배열의 선언과 생성
-// 배열의 인덱스
+//
+// 배열의 인덱스배열의 선언과 생성
 
 package JavaStandard.Array;
 

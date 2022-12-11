@@ -5,7 +5,7 @@
         // charAt(int index)
         // length()
         // substring(int from, int to)
-        // equals(Object obj)
+        // equals(object obj)
         // toCharArray()
 
 
